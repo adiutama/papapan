@@ -1,0 +1,22 @@
+{
+  "globals": {
+    "NodeJS": true
+  },
+  "extends": [
+    "@nuxtjs/eslint-config-typescript",
+    "plugin:import/typescript"
+  ],
+  "rules": {
+    "no-console": "off",
+    "vue/one-component-per-file": "off",
+    "vue/require-default-prop": "off"
+  },
+  "overrides": [
+    {
+      "files": ["*.vue"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    }
+  ]
+}
