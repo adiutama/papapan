@@ -2,5 +2,5 @@
   "[vue]": {
     "editor.defaultFormatter": "johnsoncodehk.volar"
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
 }

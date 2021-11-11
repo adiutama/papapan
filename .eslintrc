@@ -8,6 +8,18 @@
   ],
   "rules": {
     "no-console": "off",
+    "space-before-function-paren": "off",
+    "arrow-parens": "off",
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "semi": ["error", "never"],
+    "comma-dangle": ["error", {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "never"
+      }
+    ],
     "vue/one-component-per-file": "off",
     "vue/require-default-prop": "off"
   },
