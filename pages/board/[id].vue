@@ -1,33 +1,45 @@
 <script lang="ts" setup>
-const list = ref<Resource.List[]>([
-  { title: 'Info' },
-  { title: 'Backlog' },
-  {
-    title: 'Todo',
-    cards: [
-      { title: 'Task #1' },
-      { title: 'Task #2' }
-    ]
-  },
-  { title: 'Blocked' },
-  { title: 'In Progress' },
-  { title: 'In Review' },
-  { title: 'In Done' },
-])
+import { useQuery } from 'villus'
+
+const route = useRoute()
+
+const variables = reactive({
+  id: route.params.id,
+})
+
+const { data } = useQuery({
+  variables,
+  query: `
+    query board ($id: String!) {
+      board(id: $id) {
+        id
+        name
+        lists {
+          id
+          name
+          tasks {
+            id
+            name
+          }
+        }
+      }
+    }
+  `,
+})
 </script>
 
 <template>
   <div class="flex flex-1">
     <div class="flex gap-10">
-      <div class="w-272px" v-for="(item, index) in list" :key="index">
+      <div v-for="list in data?.board?.lists" :key="list.id" class="w-272px">
         <div class="p-2 border">
           <div>
-            <h2>{{ item.title }}</h2>
+            <h2>{{ list.name }}</h2>
           </div>
 
           <div>
-            <div v-for="(card, index) in item.cards" :key="index">
-              <span>{{ card.title }}</span>
+            <div v-for="task in list.tasks" :key="task.id">
+              <span>{{ task.name }}</span>
             </div>
           </div>
 

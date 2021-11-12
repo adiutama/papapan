@@ -3324,7 +3324,7 @@ graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0,
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.8.tgz#e412b8d33f5e006593cbd3cee6df9f2cebbe802a"
   integrity sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==
 
-graphql@^15.0.0:
+graphql@^15.0.1:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.7.2.tgz#85ab0eeb83722977151b3feb4d631b5f2ab287ef"
   integrity sha512-AnnKk7hFQFmU/2I9YSQf3xw44ctnSFCfp3zE0N6W174gqe9fWG/2rKaKxROK7CcI3XtERpjEKFqts8o319Kf7A==
@@ -6311,6 +6311,11 @@ vendors@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/vendors/-/vendors-1.0.4.tgz#e2b800a53e7a29b93506c3cf41100d16c4c4ad8e"
   integrity sha512-/juG65kTL4Cy2su4P8HjtkTxk6VmJDiOPBufWniqQ6wknac6jNiXS9vU+hO3wgusiyqWlzTbVHi0dyJqRONg3w==
+
+villus@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/villus/-/villus-1.0.1.tgz#847f8dcaf29b505a95bbb5a393631ebbc4c76575"
+  integrity sha512-mBjUO2UJjKBEZu1eQfa8BNLkGNPEN6cRtIBRFQNQA0i403NxFMT8kS4jdCGu6nRfk8sTQkhPhehMHRJjUptkSQ==
 
 vite-plugin-windicss@^1.5.1:
   version "1.5.1"

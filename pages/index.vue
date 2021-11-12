@@ -1,9 +1,15 @@
+<script lang="ts" setup>
+import { useQuery } from 'villus'
+
+const { data } = useQuery({
+  query: `{ boards { id name } }`,
+})
+</script>
+
 <template>
   <div class="grid grid-cols-4 grid-rows-5 gap-10 w-full">
-    <NuxtLink to="/board/1" class="p-4 border">Board 1</NuxtLink>
-    <NuxtLink to="/board/2" class="p-4 border">Board 2</NuxtLink>
-    <NuxtLink to="/board/3" class="p-4 border">Board 3</NuxtLink>
-    <NuxtLink to="/board/4" class="p-4 border">Board 4</NuxtLink>
-    <NuxtLink to="/board/5" class="p-4 border">Board 5</NuxtLink>
+    <NuxtLink v-for="(board, index) in data?.boards" :key="index" :to="`/board/${board.id}`" class="p-4 border">
+      {{ board.name }}
+    </NuxtLink>
   </div>
 </template>
