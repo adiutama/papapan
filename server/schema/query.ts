@@ -1,7 +1,7 @@
 import { queryType, nonNull, stringArg } from 'nexus'
 
 // TODO: Dummy data, will be removed soon
-import boards from '../data/boards.json'
+import boards from '~/server/data/boards.json'
 
 export const Query = queryType({
   definition(t) {

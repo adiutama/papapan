@@ -1,8 +1,8 @@
 import { objectType } from 'nexus'
 
 // TODO: Dummy data, will be removed soon
-import boards from '../data/boards.json'
-import tasks from '../data/tasks.json'
+import boards from '~/server/data/boards.json'
+import tasks from '~/server/data/tasks.json'
 
 export const List = objectType({
   name: 'List',
