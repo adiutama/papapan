@@ -1,25 +1,63 @@
-import { objectType } from 'nexus'
-
-// TODO: Dummy data, will be removed soon
-import boards from '~/server/data/boards.json'
-import tasks from '~/server/data/tasks.json'
+import { objectType, queryField, list, arg, nonNull } from 'nexus'
 
 export const List = objectType({
   name: 'List',
   definition(t) {
-    t.id('id')
-    t.string('name')
-    t.string('board_id')
+    t.nonNull.id('id')
+    t.nonNull.string('name')
+    t.nonNull.string('board_id')
     t.field('board', {
       type: 'Board',
-      resolve(list) {
-        return boards.find((board) => board.id === list.board_id) || null
+      resolve(list, _, ctx) {
+        return ctx.db.board.findUnique({
+          where: {
+            id: list.board_id,
+          },
+        })
       },
     })
-    t.list.field('tasks', {
-      type: 'Task',
-      resolve(list) {
-        return tasks.filter((task) => list.id === task.list_id)
+    t.list.field('cards', {
+      type: 'Card',
+      resolve(list, _, ctx) {
+        return ctx.db.card.findMany({
+          where: {
+            list_id: list.id,
+          },
+        })
+      },
+    })
+  },
+})
+
+export const QueryListField = queryField('list', {
+  type: 'List',
+  args: {
+    id: arg({
+      type: nonNull('String'),
+    }),
+  },
+  resolve(_, args, ctx) {
+    return ctx.db.list.findUnique({
+      where: {
+        id: args.id,
+      },
+    })
+  },
+})
+
+export const QueryListCollectionField = queryField('lists', {
+  type: list('List'),
+  args: {
+    ids: arg({
+      type: list(nonNull('String')),
+    }),
+  },
+  resolve(_, args, ctx) {
+    return ctx.db.list.findMany({
+      where: {
+        id: {
+          in: args.ids || undefined,
+        },
       },
     })
   },

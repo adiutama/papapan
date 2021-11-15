@@ -3,26 +3,32 @@
 
 
 type Board {
-  id: ID
+  id: ID!
   lists: [List]
-  name: String
+  name: String!
+}
+
+type Card {
+  board: Board
+  board_id: String!
+  id: ID!
+  list_id: String!
+  name: String!
 }
 
 type List {
   board: Board
-  board_id: String
-  id: ID
-  name: String
-  tasks: [Task]
+  board_id: String!
+  cards: [Card]
+  id: ID!
+  name: String!
 }
 
 type Query {
   board(id: String!): Board
-  boards: [Board]
-}
-
-type Task {
-  id: ID
-  list_id: String
-  name: String
+  boards(ids: [String!]): [Board]
+  card(id: String!): Card
+  cards(ids: [String!]): [Card]
+  list(id: String!): List
+  lists(ids: [String!]): [List]
 }

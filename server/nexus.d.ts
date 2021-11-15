@@ -4,7 +4,7 @@
  */
 
 
-
+import type { Context } from "./context"
 
 
 
@@ -29,20 +29,21 @@ export interface NexusGenScalars {
 
 export interface NexusGenObjects {
   Board: { // root type
-    id?: string | null; // ID
-    name?: string | null; // String
+    id: string; // ID!
+    name: string; // String!
+  }
+  Card: { // root type
+    board_id: string; // String!
+    id: string; // ID!
+    list_id: string; // String!
+    name: string; // String!
   }
   List: { // root type
-    board_id?: string | null; // String
-    id?: string | null; // ID
-    name?: string | null; // String
+    board_id: string; // String!
+    id: string; // ID!
+    name: string; // String!
   }
   Query: {};
-  Task: { // root type
-    id?: string | null; // ID
-    list_id?: string | null; // String
-    name?: string | null; // String
-  }
 }
 
 export interface NexusGenInterfaces {
@@ -57,25 +58,31 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   Board: { // field return type
-    id: string | null; // ID
+    id: string; // ID!
     lists: Array<NexusGenRootTypes['List'] | null> | null; // [List]
-    name: string | null; // String
+    name: string; // String!
+  }
+  Card: { // field return type
+    board: NexusGenRootTypes['Board'] | null; // Board
+    board_id: string; // String!
+    id: string; // ID!
+    list_id: string; // String!
+    name: string; // String!
   }
   List: { // field return type
     board: NexusGenRootTypes['Board'] | null; // Board
-    board_id: string | null; // String
-    id: string | null; // ID
-    name: string | null; // String
-    tasks: Array<NexusGenRootTypes['Task'] | null> | null; // [Task]
+    board_id: string; // String!
+    cards: Array<NexusGenRootTypes['Card'] | null> | null; // [Card]
+    id: string; // ID!
+    name: string; // String!
   }
   Query: { // field return type
     board: NexusGenRootTypes['Board'] | null; // Board
     boards: Array<NexusGenRootTypes['Board'] | null> | null; // [Board]
-  }
-  Task: { // field return type
-    id: string | null; // ID
-    list_id: string | null; // String
-    name: string | null; // String
+    card: NexusGenRootTypes['Card'] | null; // Card
+    cards: Array<NexusGenRootTypes['Card'] | null> | null; // [Card]
+    list: NexusGenRootTypes['List'] | null; // List
+    lists: Array<NexusGenRootTypes['List'] | null> | null; // [List]
   }
 }
 
@@ -85,21 +92,27 @@ export interface NexusGenFieldTypeNames {
     lists: 'List'
     name: 'String'
   }
-  List: { // field return type name
+  Card: { // field return type name
     board: 'Board'
     board_id: 'String'
     id: 'ID'
+    list_id: 'String'
     name: 'String'
-    tasks: 'Task'
+  }
+  List: { // field return type name
+    board: 'Board'
+    board_id: 'String'
+    cards: 'Card'
+    id: 'ID'
+    name: 'String'
   }
   Query: { // field return type name
     board: 'Board'
     boards: 'Board'
-  }
-  Task: { // field return type name
-    id: 'ID'
-    list_id: 'String'
-    name: 'String'
+    card: 'Card'
+    cards: 'Card'
+    list: 'List'
+    lists: 'List'
   }
 }
 
@@ -107,6 +120,21 @@ export interface NexusGenArgTypes {
   Query: {
     board: { // args
       id: string; // String!
+    }
+    boards: { // args
+      ids?: string[] | null; // [String!]
+    }
+    card: { // args
+      id: string; // String!
+    }
+    cards: { // args
+      ids?: string[] | null; // [String!]
+    }
+    list: { // args
+      id: string; // String!
+    }
+    lists: { // args
+      ids?: string[] | null; // [String!]
     }
   }
 }
@@ -142,7 +170,7 @@ export type NexusGenFeaturesConfig = {
 }
 
 export interface NexusGenTypes {
-  context: any;
+  context: Context;
   inputTypes: NexusGenInputs;
   rootTypes: NexusGenRootTypes;
   inputTypeShapes: NexusGenInputs & NexusGenEnums & NexusGenScalars;
