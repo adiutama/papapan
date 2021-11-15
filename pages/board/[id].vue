@@ -17,7 +17,7 @@ const { data } = useQuery({
         lists {
           id
           name
-          tasks {
+          cards {
             id
             name
           }
@@ -38,8 +38,8 @@ const { data } = useQuery({
           </div>
 
           <div>
-            <div v-for="task in list.tasks" :key="task.id">
-              <span>{{ task.name }}</span>
+            <div v-for="card in list.cards" :key="card.id">
+              <span>{{ card.name }}</span>
             </div>
           </div>
 
