@@ -29,22 +29,26 @@ const { data } = useQuery({
 </script>
 
 <template>
-  <div class="flex flex-1">
-    <div class="flex gap-10">
-      <div v-for="list in data?.board?.lists" :key="list.id" class="w-272px">
-        <div class="p-2 border">
-          <div>
-            <h2>{{ list.name }}</h2>
-          </div>
+  <div class="flex flex-col gap-8">
+    <div>
+      <h1>{{ data?.board?.name }}</h1>
+    </div>
 
-          <div>
-            <div v-for="card in list.cards" :key="card.id">
-              <span>{{ card.name }}</span>
+    <div class="flex flex-1">
+      <div class="flex gap-10">
+        <div v-for="list in data?.board?.lists" :key="list.id" class="w-272px">
+          <div class="p-2 border">
+            <div>
+              <h2>{{ list.name }}</h2>
             </div>
-          </div>
-
-          <div>
-            <a href="#" @click.prevent>+ Add a Card</a>
+            <div>
+              <div v-for="card in list.cards" :key="card.id">
+                <span>{{ card.name }}</span>
+              </div>
+            </div>
+            <div>
+              <a href="#" @click.prevent>+ Add a Card</a>
+            </div>
           </div>
         </div>
       </div>

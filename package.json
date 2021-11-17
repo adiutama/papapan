@@ -1,7 +1,6 @@
 {
   "private": true,
   "scripts": {
-    "postinstall": "prisma generate",
     "dev": "nuxi dev",
     "build": "nuxi build",
     "start": "node .output/server/index.mjs",
@@ -23,9 +22,11 @@
     "@prisma/client": "^3.4.2",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
+    "feather-icons": "^4.28.0",
     "graphql": "^15.0.1",
     "nexus": "^1.1.0",
-    "villus": "^1.0.1"
+    "villus": "^1.0.1",
+    "vue-feather": "^2.0.0-rc.1"
   },
   "prisma": {
     "schema": "server/database/schema.prisma"

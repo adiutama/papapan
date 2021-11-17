@@ -2,5 +2,14 @@
   "[vue]": {
     "editor.defaultFormatter": "johnsoncodehk.volar"
   },
-  "editor.formatOnSave": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true
+  },
+  "explorerExclude.backup": null
 }
